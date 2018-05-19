@@ -6,8 +6,8 @@ from torch.autograd import Function
 import numpy as np
 
 class AngleSoftmax(nn.Module):
-    def __init__(self, input_size, output_size, normalize=True, m=4, lambda_max=1000.0, power=1.0, gamma=0.1,
-                 loss_weight=1.0):
+    def __init__(self, input_size, output_size, normalize=True, m=4, lambda_max=1000.0, lambda_min=5.0, 
+                 power=1.0, gamma=0.1, loss_weight=1.0):
         super(AngleSoftmax, self).__init__()
         self.loss_weight = loss_weight
         self.normalize = normalize
@@ -16,7 +16,7 @@ class AngleSoftmax(nn.Module):
         self.m = m
 
         self.it = 0
-        self.LambdaMin = 5.0
+        self.LambdaMin = lambda_min
         self.LambdaMax = lambda_max
         self.gamma = gamma
         self.power = power
