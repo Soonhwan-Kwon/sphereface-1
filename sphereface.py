@@ -16,7 +16,7 @@ class AngleSoftmax(nn.Module):
         self.m = m
 
         self.it = 0
-        self.LambdaMin = 1000.0
+        self.LambdaMin = 5.0
         self.LambdaMax = lambda_max
         self.gamma = gamma
         self.power = power
