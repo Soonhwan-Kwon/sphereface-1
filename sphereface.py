@@ -8,6 +8,17 @@ import numpy as np
 class AngleSoftmax(nn.Module):
     def __init__(self, input_size, output_size, normalize=True, m=4, lambda_max=1000.0, lambda_min=5.0, 
                  power=1.0, gamma=0.1, loss_weight=1.0):
+        '''
+        :param input_size: Input channel size.
+        :param output_size: Number of Class.
+        :param normalize: Whether do weight normalization.
+        :param m: An integer, specifying the margin type, take value of [0,1,2,3,4,5].
+        :param lambda_max: Starting value for lambda.
+        :param lambda_min: Minimum value for lambda.
+        :param power: Decreasing strategy for lambda.
+        :param gamma: Decreasing strategy for lambda.
+        :param loss_weight: Loss weight for this loss. 
+        '''
         super(AngleSoftmax, self).__init__()
         self.loss_weight = loss_weight
         self.normalize = normalize
